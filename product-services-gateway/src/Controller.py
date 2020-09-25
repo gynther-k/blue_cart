@@ -10,8 +10,8 @@ import uuid
 import ast
 
 RABBITMQSERVER = os.environ['AMPQ_HOST']
-PIKAUSERNAME = os.environ['PIKAUSERNAME']
-PIKAPASSWORD = os.environ['PIKAPASSWORD']
+#PIKAUSERNAME = os.environ['PIKAUSERNAME']
+#PIKAPASSWORD = os.environ['PIKAPASSWORD']
 
 #RABBITMQSERVER = 'localhost'
 #PIKAUSERNAME = 'user'

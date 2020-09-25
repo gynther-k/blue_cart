@@ -21,9 +21,13 @@ class JSONEncoder(json.JSONEncoder):
         if isinstance(o, ObjectId):
             return str(o)
         return json.JSONEncoder.default(self, o)
-
+print("START SHIPPING SERVER BEFORE CONNECTION")
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host=RABBITMQSERVER))
+
+print(connection)
+print("AFTER CONNECTION")
+
 
 channel = connection.channel()
 
