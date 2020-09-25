@@ -11,8 +11,8 @@ import pika
 #PIKAUSERNAME = 'user'
 #PIKAPASSWORD = 'admin'
 RABBITMQSERVER = os.environ['AMPQ_HOST']
-PIKAUSERNAME = os.environ['PIKAUSERNAME']
-PIKAPASSWORD = os.environ['PIKAPASSWORD']
+#PIKAUSERNAME = os.environ['PIKAUSERNAME']
+#PIKAPASSWORD = os.environ['PIKAPASSWORD']
 
 
 
