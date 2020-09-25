@@ -16,10 +16,13 @@ class JSONEncoder(json.JSONEncoder):
 
 @app.route('/product_service_proxy', methods=['GET'])
 def post_route():
-
+    print("RECEIVE GET")
     start_time = time.time()
     product_id=request.headers["Product-Id"]
     customer_id=request.headers["Customer-Id"]
+    print("prduct_id and customer id")
+    print(product_id)
+    print(customer_id)
 
     result=Controller.doTheMagic(product_id,customer_id)
   
@@ -30,6 +33,8 @@ def post_route():
     else:
         print("fail")
         return jsonify(error=str({"message": "not found!"})), 404
+
+    print(result)
 
     return make_response(result,200)
 
