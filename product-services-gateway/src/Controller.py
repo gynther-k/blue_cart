@@ -27,7 +27,7 @@ class RabbitRpcClient(object):
 
     def __init__(self):
         self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host=RABBITMQSERVER))
+            pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials('guest','guest')))
 
         self.channel = self.connection.channel()
 

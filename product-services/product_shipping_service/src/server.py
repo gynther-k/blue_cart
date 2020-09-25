@@ -23,7 +23,7 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 print("START SHIPPING SERVER BEFORE CONNECTION")
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host=RABBITMQSERVER))
+    pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials('guest','guest')))
 
 print(connection)
 print("AFTER CONNECTION")

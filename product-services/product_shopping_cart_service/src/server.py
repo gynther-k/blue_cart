@@ -33,7 +33,7 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host=RABBITMQSERVER))
+    pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials('guest','guest')))
 
 channel = connection.channel()
 

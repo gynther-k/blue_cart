@@ -14,5 +14,5 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5672
 
-CMD [ "python", "server.py" ]
+CMD [ "python","-u", "server.py" ]
 
