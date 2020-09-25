@@ -11,9 +11,9 @@ import pika
 #PIKAUSERNAME = 'user'
 #PIKAPASSWORD = 'admin'
 
-RABBITMQSERVER = os.environ['RABBITMQSERVER']
-PIKAUSERNAME = os.environ['PIKAUSERNAME']
-PIKAPASSWORD = os.environ['PIKAPASSWORD']
+RABBITMQSERVER = os.environ['AMPQ_HOST']
+#PIKAUSERNAME = os.environ['PIKAUSERNAME']
+#PIKAPASSWORD = os.environ['PIKAPASSWORD']
 
 uri = "mongodb+srv://"+os.environ['MONGO_DB_USERNAME']+":"+os.environ['MONGO_DB_PASSWORD']+"@"+os.environ['MONGO_DB_CLUSTER_ADDRESS']+"?retryWrites=true&w=majority"
 #uri = "mongodb+srv://gynther:admin@cluster0.ypo7l.azure.mongodb.net/products?retryWrites=true&w=majority"
@@ -34,7 +34,7 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials(PIKAUSERNAME,PIKAPASSWORD)))
+    pika.ConnectionParameters(host=RABBITMQSERVER))
 
 channel = connection.channel()
 

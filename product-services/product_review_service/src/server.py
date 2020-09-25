@@ -11,7 +11,7 @@ import pika
 #PIKAUSERNAME = 'user'
 #PIKAPASSWORD = 'admin'
 
-RABBITMQSERVER = os.environ['RABBITMQSERVER']
+RABBITMQSERVER = os.environ['AMPQ_HOST']
 PIKAUSERNAME = os.environ['PIKAUSERNAME']
 PIKAPASSWORD = os.environ['PIKAPASSWORD']
 
@@ -34,7 +34,7 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials(PIKAUSERNAME,PIKAPASSWORD)))
+    pika.ConnectionParameters(host=RABBITMQSERVER))
 
 channel = connection.channel()
 

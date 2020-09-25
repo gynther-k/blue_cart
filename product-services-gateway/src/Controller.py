@@ -9,7 +9,7 @@ import pika
 import uuid
 import ast
 
-RABBITMQSERVER = os.environ['RABBITMQSERVER']
+RABBITMQSERVER = os.environ['AMPQ_HOST']
 PIKAUSERNAME = os.environ['PIKAUSERNAME']
 PIKAPASSWORD = os.environ['PIKAPASSWORD']
 
@@ -27,7 +27,7 @@ class RabbitRpcClient(object):
 
     def __init__(self):
         self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials(PIKAUSERNAME,PIKAPASSWORD)))
+            pika.ConnectionParameters(host=RABBITMQSERVER))
 
         self.channel = self.connection.channel()
 
