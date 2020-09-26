@@ -17,6 +17,8 @@ RABBITMQSERVER = os.environ['AMPQ_HOST']
 #PIKAUSERNAME = 'user'
 #PIKAPASSWORD = 'admin'
 
+connection = pika.BlockingConnection(pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials('guest','guest')))
+
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
@@ -26,10 +28,8 @@ class JSONEncoder(json.JSONEncoder):
 class RabbitRpcClient(object):
 
     def __init__(self):
-        self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host=RABBITMQSERVER,credentials=pika.PlainCredentials('guest','guest')))
 
-        self.channel = self.connection.channel()
+        self.channel = connection.channel()
 
         result = self.channel.queue_declare(queue='', exclusive=True)
         self.callback_queue = result.method.queue
@@ -55,7 +55,7 @@ class RabbitRpcClient(object):
             ),
             body=str(n))
         while self.response is None:
-            self.connection.process_data_events()
+            connection.process_data_events()
 
 
         return self.response
