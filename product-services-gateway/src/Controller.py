@@ -1,4 +1,3 @@
-import requests
 import asyncio
 from flask import jsonify,make_response
 import json

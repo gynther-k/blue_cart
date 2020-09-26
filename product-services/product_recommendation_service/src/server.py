@@ -13,7 +13,6 @@ import Info_pb2_grpc
 import Controller
 
 uri = "mongodb+srv://"+os.environ['MONGO_DB_USERNAME']+":"+os.environ['MONGO_DB_PASSWORD']+"@"+os.environ['MONGO_DB_CLUSTER_ADDRESS']+"?retryWrites=true&w=majority"
-#uri = "mongodb+srv://gynther:admin@cluster0.ypo7l.azure.mongodb.net/products?retryWrites=true&w=majority"
 conn='null'
 mongodbconnection='null'
 PORT='[::]:50051' 
