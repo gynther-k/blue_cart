@@ -7,7 +7,7 @@ MYSQL_DB_USERNAME=os.environ['MYSQL_DB_USERNAME']
 MYSQL_DB_PASSWORD=os.environ['MYSQL_DB_PASSWORD']
 
 try:
-    cnx = mysql.connector.connect(user=MYSQL_DB_USERNAME,password=MYSQL_DB_PASSWORD,host=MYSQL_DB_HOST, database='shipping')
+    cnx = mysql.connector.connect(user=MYSQL_DB_USERNAME,password=MYSQL_DB_PASSWORD,host=MYSQL_DB_HOST, database='shipping', pool_name="pool", pool_size=10)
 except mysql.connector.Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("Something is wrong with your user name or password", flush=True)
