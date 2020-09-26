@@ -14,5 +14,7 @@ COPY ./src .
 
 EXPOSE 5672
 
+ENV PYTHONUNBUFFERED=0
+
 CMD [ "python","-u","server.py" ]
 
