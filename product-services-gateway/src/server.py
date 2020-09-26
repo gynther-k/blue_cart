@@ -24,7 +24,7 @@ def post_route():
     result=Controller.doTheMagic(product_id,customer_id)
   
     if result:
-        result=json.dumps({"result":json.loads(result),"Duration":((time.time() - start_time)*1000)}) 
+        result=json.dumps({"result":json.loads(result),"duration":((time.time() - start_time)*1000)}) 
         result=json.loads(result)
         result=JSONEncoder().encode(result)
     else:
