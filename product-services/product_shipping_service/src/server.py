@@ -4,6 +4,7 @@ from flask import jsonify
 import os
 import json
 from bson import ObjectId
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -14,9 +15,8 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 
-@app.route('/shipping', methods=['POST'])
+@app.route('/shipping', methods=['GET'])
 def index():
-
     #pid=request.headers["Product-Id"]
     res = Controller.retrieve_shipping()
 
@@ -27,4 +27,5 @@ def index():
 
     return json.dumps(JSONEncoder().encode(res))
 
-app.run(host="0.0.0.0", port=int("3000"), debug=True, threaded=True)
+#app.run(host="0.0.0.0", port=int("3000"), debug=True, threaded=True)
+serve(app, host="0.0.0.0", threads=32, port=3000)

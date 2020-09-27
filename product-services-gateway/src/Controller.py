@@ -68,7 +68,7 @@ async def getProductRecommendationService(pid):
 async def getProductShippingService(pid):
         
     try:
-        v = requests.post(PRODUCT_SHIPPING_SERVICE_ENDPOINT)
+        v = requests.get(PRODUCT_SHIPPING_SERVICE_ENDPOINT)
         v = json.dumps({"Product_Shipping":json.loads(v.json())})
         v = json.loads(v)
 

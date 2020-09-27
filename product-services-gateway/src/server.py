@@ -4,6 +4,7 @@ from flask import jsonify,make_response
 import json
 from bson import ObjectId
 import time
+# from waitress import serve
 
 app = Flask(__name__)
 
@@ -35,4 +36,5 @@ def post_route():
 
 
 #TODO Change port 
-app.run(host="0.0.0.0", port=int("3000"), debug=True, threaded=True)
+app.run(host="0.0.0.0", port=int("3000"), debug=True, threaded=True, processes=1)
+# serve(app, host="0.0.0.0", threads=32, port=3000)
