@@ -8,17 +8,6 @@ from bson import ObjectId
 
 app = Flask(__name__)
 
-uri = "mongodb+srv://"+os.environ['MONGO_DB_USERNAME']+":"+os.environ['MONGO_DB_PASSWORD']+"@"+os.environ['MONGO_DB_CLUSTER_ADDRESS']+"?retryWrites=true&w=majority"
-conn='null'
-mongodbconnection='null'
-
-try: 
-    conn = MongoClient(uri)
-    mongodbconnection = conn.products #database name
-except Exception as err:
-    print("Exception in mongoDB: {0}".format(err))
-
-
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
