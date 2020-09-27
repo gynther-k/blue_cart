@@ -2,7 +2,6 @@ import grpc
 from concurrent import futures
 import time
 import json
-from pymongo import MongoClient 
 import os
 
 # import the generated classes
@@ -12,17 +11,9 @@ import Info_pb2_grpc
 # import the original Controller.py
 import Controller
 
-uri = "mongodb+srv://"+os.environ['MONGO_DB_USERNAME']+":"+os.environ['MONGO_DB_PASSWORD']+"@"+os.environ['MONGO_DB_CLUSTER_ADDRESS']+"?retryWrites=true&w=majority"
-conn='null'
-mongodbconnection='null'
 PORT='[::]:3000' 
 #PORT='[::]:50054'
 
-try: 
-    conn = MongoClient(uri)
-    mongodbconnection = conn.products #database name
-except Exception as err:
-    print("Exception in mongoDB: {0}".format(err))
 
 #classname From bottom of proto file
 class InfoServicer(Info_pb2_grpc.InfoServicer):
@@ -46,7 +37,7 @@ class InfoServicer(Info_pb2_grpc.InfoServicer):
 
 
 # create a gRPC server
-server = grpc.server(futures.ThreadPoolExecutor())
+server = grpc.server(futures.ThreadPoolExecutor(max_workers=32))
 
 # use the generated function
 # to add the defined class to the server

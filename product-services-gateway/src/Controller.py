@@ -33,6 +33,7 @@ class JSONEncoder(json.JSONEncoder):
 
 async def getProductInfo(pid):
     #start_time = time.time()
+    print("START GET PRODUCT INFO", flush=True)
     v={}    
     try:
         channel = grpc.insecure_channel(PRODUCT_INFO_SERVICE_ENDPOINT)

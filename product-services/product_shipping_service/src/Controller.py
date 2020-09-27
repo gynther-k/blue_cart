@@ -7,7 +7,7 @@ MYSQL_DB_USERNAME=os.environ['MYSQL_DB_USERNAME']
 MYSQL_DB_PASSWORD=os.environ['MYSQL_DB_PASSWORD']
 
 try:
-    cnx = mysql.connector.connect(user=MYSQL_DB_USERNAME,password=MYSQL_DB_PASSWORD,host=MYSQL_DB_HOST, database='shipping', pool_name="pool", pool_size=10)
+    cnx = mysql.connector.connect(user=MYSQL_DB_USERNAME,password=MYSQL_DB_PASSWORD,host=MYSQL_DB_HOST, database='shipping', pool_name="pool", pool_size=32)
 except mysql.connector.Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("Something is wrong with your user name or password", flush=True)
@@ -15,10 +15,12 @@ except mysql.connector.Error as err:
         print("Database does not exist", flush=True)
 
 def retrieve_shipping():
-    cursor = cnx.cursor()
+    pooled_cnx = mysql.connector.connect(pool_name="pool")
+    cursor = pooled_cnx.cursor()
     query = ("SELECT * from shipping.shipping")
     cursor.execute(query)
     result=cursor.fetchall()
     cursor.close()
+    pooled_cnx.close()
     
     return result

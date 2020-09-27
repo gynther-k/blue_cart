@@ -40,12 +40,7 @@ class InfoServicer(Info_pb2_grpc.InfoServicer):
         
         response.mapfield["productid"]=res['product_id']
         response.mapfield["productname"]=res['product_name']
-        response.mapfield["shortdescription"]=res['short_description']
-        response.mapfield["longdescription"]=res['long_description']
         response.mapfield["price"]=str(res['price'])
-        response.mapfield["currency"]=res['currency']
-        response.mapfield["productcategory"]=res['product_category']
-        response.mapfield["productimage"]=res['product_image']
 
         return response
 
