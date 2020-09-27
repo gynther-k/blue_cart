@@ -1,0 +1,2 @@
+mysql-connector-python==8.0.19
+amqpstorm==2.8.1
