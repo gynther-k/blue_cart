@@ -12,7 +12,7 @@ RUN apt-get install -y gzip
 
 RUN pip install -r requirements.txt
 
-EXPOSE 50052
+EXPOSE 3000
 
 ENV PYTHONUNBUFFERED=0
 

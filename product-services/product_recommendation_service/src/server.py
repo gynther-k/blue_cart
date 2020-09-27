@@ -15,7 +15,7 @@ import Controller
 uri = "mongodb+srv://"+os.environ['MONGO_DB_USERNAME']+":"+os.environ['MONGO_DB_PASSWORD']+"@"+os.environ['MONGO_DB_CLUSTER_ADDRESS']+"?retryWrites=true&w=majority"
 conn='null'
 mongodbconnection='null'
-PORT='[::]:50051' 
+PORT='[::]:3000' 
 #PORT='[::]:50052'
 
 try: 
